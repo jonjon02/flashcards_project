@@ -1,0 +1,15 @@
+services:
+  db: 
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: WMrtrm#RZ7G
+      POSTGRES_USER: jbruch
+    ports:  
+      - 5432:5432
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+
+volumes:
+  postgres-volume:
+    external: true
