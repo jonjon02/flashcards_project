@@ -3,23 +3,15 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-class Set(BaseModel):
-    set_id: int
-    set_name: str
-    set_description: str
-    set_owner: int
 
-class SetCreate(Set):
-    pass
-
-set_database: list = []
+deck_database: list = []
 
 @app.post("/library/")
-def create_set(set: SetCreate):
-    if ma
-    set_database.append(Set(set_id=set.set_id, set_name=set.set_name, set_description=set.set_description, set_owner=set.set_owner))
-    return {"set_id = ", set.set_id}
+def create_deck(deck: deckCreate):
+    if m
+    deck_database.append(deck(deck_id=deck.deck_id, deck_name=deck.deck_name, deck_description=deck.deck_description, deck_owner=deck.deck_owner))
+    return {"deck_id = ", deck.deck_id}
 
 @app.get("/library/")
-def get_sets():
-    return set_database
+def get_decks():
+    return deck_database
