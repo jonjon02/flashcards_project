@@ -5,8 +5,9 @@ services:
     environment:
       POSTGRES_PASSWORD: WMrtrm#RZ7G
       POSTGRES_USER: jbruch
+      POSTGRES_DB: flashcards
     ports:  
-      - 5432:5432
+      - 5431:5432
     volumes:
       - postgres-volume:/var/lib/postgresql/data
 
