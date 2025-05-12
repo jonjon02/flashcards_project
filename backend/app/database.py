@@ -19,35 +19,12 @@
 
 import psycopg2
 
-# print("test")
+conn = psycopg2.connect("dbname=flashcards user=jbruch port=5431 host=127.0.0.1 password=WMrtrm#RZ7G")
 
-# try:
-#     conn = psycopg2.connect(
-#         dbname="flashcards_pg",
-#         user="jbruch",
-#         password="WMrtrm#RZ7G",
-#         host="127.0.0.1",
-#         port="5432"
-#     )
-#     print("Connection to PostgreSQL succeeded!")
-#     conn.close()
-    
-# except Exception as e:
-#     print("Connection failed:", e)
-# print("test")
-# conn = psycopg2.connect(database="flashcards", user="jbruch", password="WMrtrm#RZ7G", host="localhost")
-# conn.close()
-# print("test")
-
-
-# Connect to your postgres DB
-conn = psycopg2.connect("dbname=flashcards user=jbruch host=localhost port=5431 password=WMrtrm#RZ7G")
-
-# Open a cursor to perform database operations
 cur = conn.cursor()
 
-# Execute a query
 cur.execute("SELECT * FROM users")
 
-# Retrieve query results
-records = cur.fetchall()
+print([i for i in cur.fetchall()])
+
+
