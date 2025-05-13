@@ -1,2 +1,2 @@
 # flashcards_project
-development of a flashcards application
+development of an flashcards app for uni :)
