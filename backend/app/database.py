@@ -1,30 +1,27 @@
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import Session
-# from sqlalchemy import select
-# from models import *
+from sqlalchemy import create_engine
+from sqlalchemy import text
+from sqlalchemy.orm import Session
+from sqlalchemy import select
+from models import *
+from datetime import datetime
+user = "jbruch"
+pwd = "WMrtrm#RZ7G"
+host = "localhost:5431"
 
-# user = "jbruch"
-# pwd = "WMrtrm#RZ7G"
-# host = "0.0.0.0:5432"
+engine = create_engine(f'postgresql+psycopg2://{user}:{pwd}@{host}/flashcards', echo=False)
 
-# # Set up the database engine
-# engine = create_engine(f'postgresql+psycopg2://{user}:{pwd}@{host}/flashcards')
-
-# session = Session(engine)
-
-# stmt = select(User).where(User.user_name.in_(["jonjon27", "sandy"]))
-
-# for user in session.scalars(stmt):
-#     print(user)
-
-import psycopg2
-
-conn = psycopg2.connect("dbname=flashcards user=jbruch port=5431 host=127.0.0.1 password=WMrtrm#RZ7G")
-
-cur = conn.cursor()
-
-cur.execute("SELECT * FROM users")
-
-print([i for i in cur.fetchall()])
-
-
+def get_user(id: int):
+    with engine.connect() as conn:
+        result = conn.execute(select(User).where(User.user_id == id).limit(1))
+        return result.fetchall()
+    
+def get_deck(id: int):
+    with Session(engine) as session:
+        deck = session.get(Deck, id)
+        return deck
+    
+def insert_deck(user_id: int, deck_name: str, deck_descr: str):
+    with Session(engine) as session:
+        session.add(Deck(user_id_fk=user_id, deck_name=deck_name, deck_description=deck_descr, date_created=datetime.now()))
+        session.commit()
+        return Deck.deck_id
