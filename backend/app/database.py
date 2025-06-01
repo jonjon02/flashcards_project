@@ -9,11 +9,11 @@ from datetime import datetime
 # pwd = "WMrtrm#RZ7G"
 # host = "localhost:5431"
 class DbWrapper:
-    __init__(self, dbuser, pwd, host):
+    __init__(self, dbuser: str, pwd: str, host: str):
         dbuser = self.dbuser
         pwd = self.pwd
         host = self.host
-        
+
     engine = create_engine(f'postgresql+psycopg2://{dbuser}:{pwd}@{host}/flashcards', echo=False)
 
     def get_user(id: int):
