@@ -20,6 +20,12 @@ def get_deck(id: int):
         deck = session.get(Deck, id)
         return deck
     
+def get_decks(user_Id: int):
+    with Session(engine) as session:
+        result = select(Deck).where(user_Id==user_Id)
+        decks = session.scalars(result).all()
+        return decks
+    
 def get_single_card(id: int):
     with Session(engine) as session:
         card = session.get(Card, id)
@@ -41,4 +47,8 @@ def insert_deck(user_id: int, deck_name: str, deck_descr: str):
     with Session(engine) as session:
         session.add(Deck(user_id_fk=user_id, deck_name=deck_name, deck_description=deck_descr, date_created=datetime.now()))
         session.commit()
-        return Deck.deck_id
+
+for d in get_decks(2):
+    print(d.deck_name)
+
+get_cards(2)
