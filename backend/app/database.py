@@ -1,4 +1,4 @@
-from sqlalchemy import create_self.engine
+from sqlalchemy import create_engine
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from sqlalchemy import select
@@ -7,11 +7,11 @@ from datetime import datetime
 
 class DbWrapper:
     def __init__(self, dbuser: str, pwd: str, host: str, database: str):
-        self.self.engine = create_self.engine(
+        self.engine = create_engine(
             f'postgresql+psycopg2://{dbuser}:{pwd}@{host}/{database}',
             echo=False
         )
-
+    
     def get_user(self, id: int):
         with self.engine.connect() as conn:
             result = conn.execute(select(User).where(User.user_id == id).limit(1))
@@ -44,3 +44,5 @@ class DbWrapper:
             session.add(Deck(user_id_fk=user_id, deck_name=deck_name, deck_description=deck_descr, date_created=datetime.now()))
             session.commit()
             return Deck.deck_id
+
+

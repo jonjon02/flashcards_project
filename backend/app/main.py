@@ -6,7 +6,12 @@ db = DbWrapper('jbruch', 'WMrtrm#RZ7G', 'localhost:5431', 'flashcards')
 
 app = FastAPI()
 
-@app.get("/decks/{deck_id}")
-def get_deck(deck_id):
-    deck = db.get_deck(deck_id)
+@app.get("/decks/")
+def get_cards():
+    decks = [i for i in db.get_cards(7)]
+    return decks
+
+
+
+
         
