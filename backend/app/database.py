@@ -12,27 +12,29 @@ class DbWrapper:
             echo=False
         )
     
-    def get_user(self, id: int):
-        with self.engine.connect() as conn:
-            result = conn.execute(select(User).where(User.user_id == id).limit(1))
-            return result.fetchall()
+    # def get_user(self, id: int):
+    #     with self.engine.connect() as conn:
+    #         result = conn.execute(select(User).where(User.user_id == id).limit(1))
+    #         return result.fetchall()
         
-    def get_deck(self, id: int):
+    def get_decks(self):
         with Session(self.engine) as session:
-            deck = session.get(Deck, id)
-            return deck
+            result = select(Deck)
+            decks = session.scalars(result).all()
+            return decks
         
-    def get_single_card(self, id: int):
+    def get_deck(self, deck_id: int):
+        with Session(self.engine) as session:
+            result = select(Card).where(Card.deck_id_fk==deck_id)
+            cards = session.scalars(result).all()
+            return cards   
+        
+    def get_card(self, id: int):
         with Session(self.engine) as session:
             card = session.get(Card, id)
             return card
 
-    def get_cards(self, deck_id: int):
-        with Session(self.engine) as session:
-            result = select(Card).where(Card.deck_id_fk==deck_id)
-            cards = session.scalars(result).all()
-            return cards
-        
+
     def insert_card(self, deck_id: int, question: str, answer: str):
         with Session(self.engine) as session:
             session.add(Card(deck_id_fk=deck_id, question=question, answer=answer, date_created=datetime.now()))
@@ -44,5 +46,7 @@ class DbWrapper:
             session.add(Deck(user_id_fk=user_id, deck_name=deck_name, deck_description=deck_descr, date_created=datetime.now()))
             session.commit()
             return Deck.deck_id
+        
+    
 
 

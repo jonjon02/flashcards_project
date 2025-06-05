@@ -11,7 +11,3 @@ def get_cards():
     decks = [i for i in db.get_cards(7)]
     return decks
 
-
-
-
-        
