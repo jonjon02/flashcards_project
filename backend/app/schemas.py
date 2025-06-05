@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from models import Difficulty
 
 class DeckBase(BaseModel):
     deck_name: str
@@ -8,6 +9,12 @@ class DeckBase(BaseModel):
 class DeckCreate(DeckBase):
     pass
 
-class DeckRead(DeckBase):
+class CardBase(BaseModel):
     deck_id: int
-    date_created: datetime
+    card_question: str
+    card_answer: str
+    card_difficulty: Difficulty
+    
+class CardCreate(CardBase):
+    pass
+
