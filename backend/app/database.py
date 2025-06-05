@@ -17,23 +17,33 @@ class DbWrapper:
     #         result = conn.execute(select(User).where(User.user_id == id).limit(1))
     #         return result.fetchall()
         
-    def get_decks(self):
+    def get_all_decks(self):
         with Session(self.engine) as session:
             result = select(Deck)
             decks = session.scalars(result).all()
             return decks
         
-    def get_deck(self, deck_id: int):
+    def get_decks_by_name(self, deck_name):
+        with Session(self.engine) as session:
+            result = select(Deck).where(Deck.deck_name.like(f"%{deck_name}%"))
+            decks = session.scalars(result).all()
+            return decks
+        
+    def get_deck_by_id(self, deck_id: int):
         with Session(self.engine) as session:
             result = select(Card).where(Card.deck_id_fk==deck_id)
             cards = session.scalars(result).all()
             return cards   
         
-    def get_card(self, id: int):
+    def get_card_by_name(self, question, deck_id):
+        with Session(self.engine) as session:
+            result = select(Card).where(Card.deck_id_fk==deck_id).where((Card.question.like(f"%{question}%")))
+        
+    def get_card_by_id(self, id: int):
         with Session(self.engine) as session:
             card = session.get(Card, id)
             return card
-
+        
 
     def insert_card(self, deck_id: int, question: str, answer: str):
         with Session(self.engine) as session:
