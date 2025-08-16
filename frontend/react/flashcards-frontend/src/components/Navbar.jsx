@@ -3,13 +3,15 @@ import './Navbar.css'
 
 function Navbar() {
     return (
-        <div>
-            <ul>
-                <li>Home</li>
-                <li>Library</li>
-                <li>About</li>
-            </ul>
-        </div>
+    <nav className="navbar">  
+        <div className="logo"> Flashcards</div>
+        <ul className="nav-left">
+            <li className="nav-card">🏠 Home</li>
+            <li className="nav-card">📚 Library</li>
+            <li className="nav-card">👨‍💻 Learn</li>
+            <li className="nav-card">🔭 About</li>
+        </ul>
+    </nav>
     );
 }
 

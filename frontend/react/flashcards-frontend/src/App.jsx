@@ -7,9 +7,6 @@ export default function App() {
     <div>
        <Navbar />
     </div>
-    <div style={{textAlign: 'center'}}>
-      <h1>Flashcards</h1>
-    </div>
     </>
   );
 }
