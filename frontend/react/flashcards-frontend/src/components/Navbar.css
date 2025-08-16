@@ -1,0 +1,13 @@
+ul {
+    display: flex;
+    margin: 0;
+    padding: 10px;
+    background-color: rgb(251, 253, 255);
+    justify-content: space-between;
+}
+
+li {
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 10px;
+}
