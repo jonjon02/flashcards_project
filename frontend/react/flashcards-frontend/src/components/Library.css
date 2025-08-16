@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.lib {
+    max-width: 600px;
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon {
+    width: 16px;
+    height: 16spx;
+    padding-right: 10px;
+    padding-left: 7px;
+    transition: 0.2s;
+} 
+
+.search-bar {
+    cursor: text;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(239, 239, 239);
+    color: rgb(194, 194, 194);
+    border-radius: 25px;
+    padding: 7px;
+    margin: 20px;
+    border: 2px solid rgb(231, 231, 231);
+    transition: 0.2s;
+}
+
+.search-bar:hover {
+    color: rgb(94, 94, 94);
+    border: 2px solid rgb(186, 186, 186);
+
+
+}
+
+.search-bar:hover .search-icon {
+    transform: scale(1.45);
+}

@@ -1,9 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .logo {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: x-large;
-    color: rgb(42, 42, 42);
-    padding: 10px;
+    color: rgb(148, 148, 148);
+    padding-top: 5px;
+    padding-left: 5px;
     cursor: default;
     padding-top: 0px;
 } 
@@ -12,29 +18,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: rgb(251, 251, 251);
+    color: rgb(131, 131, 131);
     font-family: Arial, Helvetica, sans-serif;
-    border-bottom: 1px solid rgb(234, 234, 234)
+    border-bottom: 1px solid rgb(234, 234, 234);
+
 }
 
 .nav-left { 
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 7px;
-    margin-top: 1px;
 }
 
 .nav-card {
     padding: 10px;
     list-style: none;
     cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-    transition: 0.3s;
+    transition: 0.2s;
+    border-radius: 10px;    
 }
 
 .nav-card:hover {
-    background-color:rgb(17, 17, 17);
-    color: white;
+    background-color: rgb(240, 240, 240);
+    color: rgb(0, 0, 0);
 }
