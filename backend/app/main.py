@@ -1,23 +1,28 @@
 from fastapi import FastAPI, Request, HTTPException, middleware, Query
 from starlette.middleware.base import BaseHTTPMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from database import DbWrapper
 import psycopg2
 from typing import Optional
 from schemas import DeckCreate, CardCreate
 
-allowed_ips: list = ['127.0.0.1']
-
-class IPBlockerMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next):
-        client_ip = request.client.host
-        if client_ip not in allowed_ips:
-            raise HTTPException(status_code=403, detail="Forbidden")
-        return await call_next(request)
-
 db = DbWrapper('jbruch', 'WMrtrm#RZ7G', 'localhost:5431', 'flashcards')
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173", 
+    "http://127.0.0.1:5173", 
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Wichtig für GET, POST, etc.
+    allow_headers=["*"],
+)
 
 # GET Endpoints:
 

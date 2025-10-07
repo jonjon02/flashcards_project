@@ -1,7 +1,11 @@
 import './Library.css'
 
-import { MyButton } from './Button' 
+import { MyButton } from './button' 
 import { AlignStartHorizontal, Search } from 'lucide-react'
+
+function notify(msg) {
+    alert(msg)
+}
 
 function Library() { 
     return (
@@ -11,8 +15,7 @@ function Library() {
                 <Search className="search-icon"/>
                 <span>Click to Search</span>
             </div>
-            <MyButton className="button" text={"Search"}/>
-            
+            <MyButton className="button" func={notify} msg={"look at this!"}/>
         </div>
     </div>
 )
