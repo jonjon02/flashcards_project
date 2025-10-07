@@ -23,6 +23,8 @@
     cursor: text;
     width: 450px;
     display: flex;
+    justify-content: space-between;
+    text-align: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(239, 239, 239);
@@ -43,4 +45,10 @@
 
 .search-bar:hover .search-icon {
     transform: scale(1.45);
+}
+
+.left-elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
