@@ -1,18 +1,15 @@
-import { useState } from "react";
-import './Navbar.css'
+import { Link } from 'react-router-dom'
 
-function Navbar() {
+const Navbar = () => {
     return (
-    <nav className="navbar">  
-        <div className="logo">Flashcards</div>
-        <ul className="nav-left">
-            <li className="nav-card">Home</li>
-            <li className="nav-card">Library</li>
-            <li className="nav-card">Learn</li>
-            <li className="nav-card">About</li>
-        </ul>
-    </nav>
+        <nav>
+            <div>
+                <Link to="/"> Home</Link>
+                <Link to="/library">Library</Link>
+                <Link to="/learn">Learn</Link>
+            </div>
+        </nav>
     );
 }
-
-export default Navbar
+ 
+export default Navbar;
