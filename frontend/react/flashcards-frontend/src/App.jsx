@@ -7,6 +7,7 @@ import Notes from './assets/pages/Notes';
 
 export default function App() {
   return (
+    <>
     <Router>
       <div>
         <Navbar/>
@@ -19,5 +20,6 @@ export default function App() {
         </div>  
       </div>
     </Router>
+    </>
   );
 }

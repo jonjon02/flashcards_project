@@ -1,23 +1,13 @@
-import EditorJS from '@editorjs/editorjs';
-import EditorjsList from '@editorjs/list';
-
+import Editor from "../../components/Editor"
 
 const Notes = () => {
-
-    const editor = new EditorJS({
-        holder: 'editorjs',
-        autofocus: true,
-        onChange: async () => {
-            let content = await editor.saver.save();
-        },
-        tools: {
-            EditorjsList
-        }
-    });
-
     return (
-        <div id='editorjs'></div>
-    );
+        <>
+        <div>test</div>
+        <Editor/>
+
+        </>
+    )
 }
  
 export default Notes;
