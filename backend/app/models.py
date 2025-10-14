@@ -1,4 +1,5 @@
 from sqlalchemy import ForeignKey
+from sqlalchemy import JSONB
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import DeclarativeBase
@@ -55,8 +56,8 @@ class Card(Base):
     deck_id_fk: Mapped[int] = mapped_column(ForeignKey("decks.deck_id"), nullable=False)
     date_created: Mapped[datetime] = mapped_column(default=datetime)
     difficulty: Mapped[Difficulty] = mapped_column(Enum(Difficulty, name='difficulty', create_type=False), nullable=False, default='hard')
-    question:  Mapped[str] = mapped_column(nullable=False)
-    answer:  Mapped[str] = mapped_column(nullable=False)
+    question:  Mapped[JSONB] = mapped_column(nullable=False)
+    answer:  Mapped[JSONB] = mapped_column(nullable=False)
     
     deck: Mapped["Deck"] = relationship(back_populates="cards") 
 
