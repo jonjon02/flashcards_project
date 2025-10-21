@@ -1,4 +1,5 @@
 import DeckCard from "../../components/DeckCard";
+import InputModal from "../../components/InputModal";
 import { FaPlusCircle } from 'react-icons/fa';
 
 import { useEffect } from "react";
@@ -41,9 +42,18 @@ const Library = () => {
         getDecks();
     }, [])
 
+    const [deckName, setDeckName] = useState(null)
+    const [deckDescription, setDeckDescription] = useState(null)
+
+    const [isOpen, setVisibility] = useState(false)
+    const toggleInputModal = () => {
+        setVisibility(!isOpen)
+    }
+
     return (
         <>
         <div className="flex-col justify-start">
+            <InputModal isOpen={isOpen} toggle={toggleInputModal}/>
             <div className="max-w-3xl grid grid-cols-3 gap-4 mx-auto">
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
@@ -54,12 +64,18 @@ const Library = () => {
                     />
                 ))}
             </div>
-            <div className="my-10 py-10 max-w-3xl mx-auto flex justify-end border-t-2 border-gray-100">
-                <button><FaPlusCircle size={40} className="fill-slate-500 hover:fill-blue-200 hover:rotate-180 duration-500 active:fill-gray-700 cursor-pointer"/></button>
+            <div className="my-10 py-10 max-w-3xl mx-auto flex justify-end border-t-2 border-gray-100 align-middle">
+                <button 
+                    onClick={toggleInputModal}
+                    className="text-gray-600 rounded-2xl py-3 px-4 display flex items-center align-middle gap-4 drop-shadow-sm bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
+                Neues Deck
+                {/* <FaPlusCircle size={40} className="fill-slate-500 hover:fill-blue-200 hover:rotate-180 duration-500 active:fill-gray-700 cursor-pointer"/> */}
+                </button>
             </div>
+            
         </div>
+       
         </>
-        
     );
 }
  
