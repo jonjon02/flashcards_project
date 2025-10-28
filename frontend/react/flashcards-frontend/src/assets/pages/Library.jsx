@@ -12,33 +12,34 @@ const Library = () => {
     const [loading, setLoading] = useState(null)
     const [error, setError] = useState(null)
 
-    useEffect(() => {
-        const getDecks = async () => {
-            setLoading(true)
-            setError(null)
-            try {
-                const response = await fetch(
-                    'http://0.0.0.0:8000/library/'
-                )
+    const getDecks = async () => {
+                setLoading(true)
+                setError(null)
+                try {
+                    const response = await fetch(
+                        'http://0.0.0.0:8000/library/'
+                    )
 
-                if (!response.ok) {
-                    setError(`HTTP error! status: ${response.status}`)
-                    throw new Error(`HTTP error! status: ${response.status}`)
+                    if (!response.ok) {
+                        setError(`HTTP error! status: ${response.status}`)
+                        throw new Error(`HTTP error! status: ${response.status}`)
+                    }
+
+                    const decks = await response.json()
+                    console.log(decks)
+                    setData(decks)
+
                 }
+                catch (error) {
+                    console.error("Fetch error", error)
+                    setError(`Loading failed: ${error.message}`)
+                }
+                finally {
+                    setLoading(false)
+                }
+            }
 
-                const decks = await response.json()
-                console.log(decks)
-                setData(decks)
-
-            }
-            catch (error) {
-                console.error("Fetch error", error)
-                setError(`Loading failed: ${error.message}`)
-            }
-            finally {
-                setLoading(false)
-            }
-        }
+    useEffect(() => {
         getDecks();
     }, [])
 
@@ -53,8 +54,13 @@ const Library = () => {
     return (
         <>
         <div className="flex-col justify-start">
-            <InputModal isOpen={isOpen} toggle={toggleInputModal}/>
-            <div className="max-w-3xl grid grid-cols-3 gap-4 mx-auto">
+            <InputModal 
+                isOpen={isOpen} 
+                toggle={toggleInputModal} 
+                userId={5}
+                refreshDecks={getDecks}
+                />
+            <div className="max-w-3xl grid grid-cols-3 gap-4 mx-auto pb-5 pt-2">
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
                 {data && data.map((deck) => (
@@ -64,13 +70,16 @@ const Library = () => {
                     />
                 ))}
             </div>
-            <div className="my-10 py-10 max-w-3xl mx-auto flex justify-end border-t-2 border-gray-100 align-middle">
+            <div className="sticky bottom-0 backdrop-blur-2xl bg-white/75 py-5 mx-auto flex justify-end border-t-2 border-gray-100">
+                <div 
+                className="w-3xl mx-auto flex justify-end">
                 <button 
                     onClick={toggleInputModal}
-                    className="text-gray-600 rounded-2xl py-3 px-4 display flex items-center align-middle gap-4 drop-shadow-sm bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
-                Neues Deck
+                    className="text-gray-600 rounded-xl py-3 px-4 display flex items-center align-middle gap-2 drop-shadow-sm bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
+                New Deck
                 {/* <FaPlusCircle size={40} className="fill-slate-500 hover:fill-blue-200 hover:rotate-180 duration-500 active:fill-gray-700 cursor-pointer"/> */}
                 </button>
+                </div>
             </div>
             
         </div>

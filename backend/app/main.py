@@ -56,7 +56,7 @@ def get_card_by_id(card_id: int):
 
 @app.post("/library/")
 def create_deck(deck: DeckCreate):
-    db.insert_deck(2, deck.deck_name, deck.deck_description)
+    db.insert_deck(deck.user_id, deck.deck_name, deck.deck_description)
     
 @app.post("/library/deck")
 def create_card(card: CardCreate):

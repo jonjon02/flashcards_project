@@ -7,7 +7,7 @@ class DeckBase(BaseModel):
     deck_description: str
 
 class DeckCreate(DeckBase):
-    pass
+    user_id: int
 
 class CardBase(BaseModel):
     deck_id: int
