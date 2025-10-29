@@ -44,9 +44,17 @@ const Library = () => {
         getDecks();
     }, [])
 
+    //search-bar
+    const [filter, setFilter] = useState(data)
+
+    const getFilter = (filter) => {
+        setFilter(filter)
+    }
+
+
+    //new deck input-modal
     const [deckName, setDeckName] = useState(null)
     const [deckDescription, setDeckDescription] = useState(null)
-
     const [isOpen, setVisibility] = useState(false)
     const toggleInputModal = () => {
         setVisibility(!isOpen)
@@ -62,7 +70,8 @@ const Library = () => {
                 refreshDecks={getDecks}
                 />
             <SearchBar
-               data={decks} 
+               data={data} 
+               getFilter={getFilter}
             />
             <div className="max-w-3xl grid grid-cols-3 gap-4 mx-auto pb-5 pt-2">
                 {loading && <p>Loading...</p>}
