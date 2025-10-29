@@ -59,8 +59,8 @@ const InputModal = ({ isOpen, toggle, userId, refreshDecks }) => {
     return (
         <>
         {isOpen && (
-            <div className="flex-col border-1 justify-items-center mx-auto border-slate-100 w-90 h-110 rounded-2xl backdrop-blur-xl bg-slate-100/75 fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-3/5 overflow-auto shadow-md">
-            <h1 className="my-5 font-bold text-2xl text-slate-600 cursor-default">Create new deck</h1>
+            <div className="flex-col border-1 justify-items-center mx-auto border-slate-100 w-90 h-110 rounded-2xl backdrop-blur-xl bg-slate-50/75 fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-3/5 overflow-auto shadow-md">
+            <h1 className="my-5 font-bold text-2xl text-gray-600 cursor-default">Create new deck</h1>
                 <form
                     // method="post"
                     onSubmit={handleSubmit}>
@@ -79,11 +79,11 @@ const InputModal = ({ isOpen, toggle, userId, refreshDecks }) => {
                         <button
                             onClick={handleReset}
                             type="button"
-                            className="text-gray-600 rounded-xl py-2 px-4 display flex items-center align-middle gap-4 drop-shadow-sm bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
+                            className="text-gray-600 rounded-xl py-2 px-4 display flex items-center align-middle gap-4 border-1 border-slate-100 bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
                             Cancel
                         </button>
                         <button
-                            className="text-gray-600 rounded-xl py-2 px-4 display flex items-center align-middle gap-4 drop-shadow-sm bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100"
+                            className="text-gray-600 rounded-xl py-2 px-4 display flex items-center align-middle gap-4 border-1 border-slate-100 bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100"
                             type="submit">
                         Add Deck
                         </button>

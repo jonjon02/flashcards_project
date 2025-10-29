@@ -83,12 +83,12 @@ const Library = () => {
                     />
                 ))}
             </div>
-            <div className="sticky bottom-0 backdrop-blur-2xl bg-white/75 py-5 mx-auto flex justify-end border-t-2 border-gray-100">
+            <div className="sticky bottom-0 backdrop-blur-lg bg-white/75 py-5 mx-auto flex justify-end border-t-1 border-gray-100">
                 <div 
                 className="w-3xl mx-auto flex justify-end">
                 <button 
                     onClick={toggleInputModal}
-                    className="text-gray-600 rounded-xl py-3 px-4 display flex items-center align-middle gap-2 drop-shadow-sm bg-white cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
+                    className="text-gray-600 rounded-xl py-3 px-4 display bg-slate-50/50 flex items-center align-middle gap-2 border-1 border-slate-200 cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
                 New Deck
                 {/* <FaPlusCircle size={40} className="fill-slate-500 hover:fill-blue-200 hover:rotate-180 duration-500 active:fill-gray-700 cursor-pointer"/> */}
                 </button>

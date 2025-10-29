@@ -18,6 +18,7 @@ const SearchBar = ({data, getFilter}) => {
         debounce((value) => {
             setSearchString(value)
             getFilter(searchString)
+            console.log(value)
         }, 400)
         , []
     )
@@ -29,14 +30,15 @@ const SearchBar = ({data, getFilter}) => {
 
     return (
         <>
-            <div className="mx-auto flex justify-center max-w-3xl">
+            <div className="z-25 sticky top-14 mx-auto flex justify-center max-w-3xl">
                 <form
+                    className=""
                     onChange={handleSearch}> 
                     <input
                         placeholder="Search"
                         type="txt"
                         name="searchString"
-                        className="bg-white my-4 block p-1.5 border-2 rounded-lg border-slate-100 focus:outline-0 hover:bg-slate-50 hover:w-180 focus:w-180 focus:bg-slate-100 w-150 duration-120">
+                        className="px-5 bg-slate-50/75 backdrop-blur-md my-4 block p-1.5 border-1 rounded-2xl border-slate-100 focus:outline-0 hover:bg-slate-50 hover:w-180 focus:w-180 focus:bg-slate-100/70 w-150 duration-120 h-12">
                     </input>
                 </form>
             </div>
