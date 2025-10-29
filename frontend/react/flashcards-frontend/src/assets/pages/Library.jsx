@@ -1,5 +1,6 @@
 import DeckCard from "../../components/DeckCard";
 import InputModal from "../../components/InputModal";
+import SearchBar from "../../components/SearchBar";
 import { FaPlusCircle } from 'react-icons/fa';
 
 import { useEffect } from "react";
@@ -60,6 +61,9 @@ const Library = () => {
                 userId={5}
                 refreshDecks={getDecks}
                 />
+            <SearchBar
+               data={decks} 
+            />
             <div className="max-w-3xl grid grid-cols-3 gap-4 mx-auto pb-5 pt-2">
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
