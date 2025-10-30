@@ -30,6 +30,8 @@ const Library = () => {
                     console.log(decks)
                     setData(decks)
 
+                    console.log(data)
+
                 }
                 catch (error) {
                     console.error("Fetch error", error)
@@ -44,50 +46,51 @@ const Library = () => {
         getDecks();
     }, [])
 
-    //search-bar
-    const [filter, setFilter] = useState(data)
-
-    const getFilter = (filter) => {
-        setFilter(filter)
+    //search-bar 
+    const [filterString, setString] = useState('')
+   
+    function filterData(string) {
+        setString(string)
     }
-
-
+    
     //new deck input-modal
-    const [deckName, setDeckName] = useState(null)
-    const [deckDescription, setDeckDescription] = useState(null)
-    const [isOpen, setVisibility] = useState(false)
-    const toggleInputModal = () => {
-        setVisibility(!isOpen)
+    const [DeckInputisOpen, setVisibility] = useState(false)
+    const toggleDeckInputModal = () => {
+        setVisibility(!DeckInputisOpen)
     }
 
     return (
         <>
         <div className="flex-col justify-start">
             <InputModal 
-                isOpen={isOpen} 
-                toggle={toggleInputModal} 
+                isOpen={DeckInputisOpen} 
+                toggle={toggleDeckInputModal} 
                 userId={5}
                 refreshDecks={getDecks}
                 />
             <SearchBar
-               data={data} 
-               getFilter={getFilter}
+               filterData={filterData}
             />
             <div className="max-w-3xl grid grid-cols-3 gap-4 mx-auto pb-5 pt-2">
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
-                {data && data.map((deck) => (
-                    <DeckCard 
-                    deck_name={deck.deck_name}
-                    deck_description={deck.deck_description}
-                    />
+                {data && data.filter((data) => (
+                        data.deck_name.toLowerCase().includes(filterString.toLowerCase()) ||
+                        data.deck_description.toLowerCase().includes(filterString.toLowerCase())
+                        ))
+                        .map((deck) => (
+                        <DeckCard 
+                        deck_id={deck.deck_id}
+                        deck_name={deck.deck_name}
+                        deck_description={deck.deck_description}
+                        />
                 ))}
             </div>
-            <div className="sticky bottom-0 backdrop-blur-lg bg-white/75 py-5 mx-auto flex justify-end border-t-1 border-gray-100">
+            <div className="sticky bottom-0 backdrop-blur-md bg-white/50 py-5 mx-auto flex justify-end border-t-1 border-gray-100">
                 <div 
                 className="w-3xl mx-auto flex justify-end">
                 <button 
-                    onClick={toggleInputModal}
+                    onClick={toggleDeckInputModal}
                     className="text-gray-600 rounded-xl py-3 px-4 display bg-slate-50/50 flex items-center align-middle gap-2 border-1 border-slate-200 cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
                 New Deck
                 {/* <FaPlusCircle size={40} className="fill-slate-500 hover:fill-blue-200 hover:rotate-180 duration-500 active:fill-gray-700 cursor-pointer"/> */}

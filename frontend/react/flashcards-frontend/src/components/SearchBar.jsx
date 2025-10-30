@@ -1,5 +1,4 @@
-import { useCallback, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { useCallback } from "react";
 
 const debounce = (func, delay) => {
         let timer
@@ -9,17 +8,12 @@ const debounce = (func, delay) => {
         };
     };
 
-const SearchBar = ({data, getFilter}) => {
-
-    const [searchString, setSearchString] = useState('')
-    const decks = {data}
+const SearchBar = ({filterData}) => {
 
     const debouncedSearch = useCallback(
         debounce((value) => {
-            setSearchString(value)
-            getFilter(searchString)
-            console.log(value)
-        }, 400)
+            filterData(value)
+        }, 250)
         , []
     )
 
