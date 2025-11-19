@@ -46,10 +46,7 @@ const InputModal = ({ isOpen, toggle, userId, refreshDecks }) => {
 
         else {
             setError('No Deck Name provided!')
-        }
-
-        // refreshDecks()
-        
+        }        
     }
 
     function handleReset(event) {    
