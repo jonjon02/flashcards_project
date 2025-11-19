@@ -93,7 +93,6 @@ const Library = () => {
                     onClick={toggleDeckInputModal}
                     className="text-gray-600 rounded-xl py-3 px-4 display bg-slate-50/50 flex items-center align-middle gap-2 border-1 border-slate-200 cursor-pointer ease-in-out duration-150 hover:bg-slate-50 active:bg-gray-100">
                 New Deck
-                {/* <FaPlusCircle size={40} className="fill-slate-500 hover:fill-blue-200 hover:rotate-180 duration-500 active:fill-gray-700 cursor-pointer"/> */}
                 </button>
                 </div>
             </div>
