@@ -6,12 +6,18 @@ import SearchBar from "../../components/SearchBar"
 const Deck = () => {
 
     const params = useParams()
-
     const deckId = params.deckId
 
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(null)
     const [error, setError] = useState(null)
+
+    //new deck modal
+    const [FlashCardInputIsOpen, setVisibility] = useState(false)
+
+    const toggleFlashCardInputModal = () => {
+        setVisibility(!DeckInputisOpen)
+    }
 
     //filtering
     const [filterString, setString] = useState('')
@@ -54,7 +60,6 @@ const Deck = () => {
     }, [])
 
     const empty = (data) => {if(!data) return true}
-
 
     return (
         <>

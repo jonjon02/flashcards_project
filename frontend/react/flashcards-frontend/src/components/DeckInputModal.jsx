@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const InputModal = ({ isOpen, toggle, userId, refreshDecks }) => {
+const DeckInputModal = ({ isOpen, toggle, userId, refreshDecks }) => {
 
     const [error, setError] = useState(null)
     const [loading, isLoading] = useState(null)
@@ -95,4 +95,4 @@ const InputModal = ({ isOpen, toggle, userId, refreshDecks }) => {
     );
 }
  
-export default InputModal;
+export default DeckInputModal;

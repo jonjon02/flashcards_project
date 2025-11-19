@@ -1,5 +1,5 @@
 import DeckCard from "../../components/DeckCard";
-import InputModal from "../../components/InputModal";
+import DeckInputModal from "../../components/DeckInputModal";
 import SearchBar from "../../components/SearchBar";
 import { FaPlusCircle } from 'react-icons/fa';
 
@@ -62,7 +62,7 @@ const Library = () => {
     return (
         <>
         <div className="flex-col justify-start">
-            <InputModal 
+            <DeckInputModal 
                 isOpen={DeckInputisOpen} 
                 toggle={toggleDeckInputModal} 
                 userId={5}
