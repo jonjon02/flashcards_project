@@ -81,6 +81,7 @@ const Deck = () => {
                     question={card.question.q}
                     answer={card.answer.a}
                     cardId={card.card_id}
+                    toggle={toggleFlashCardEditor}
                     />
                     ))}
             {loading && <p>...Loading</p>}
